@@ -23,3 +23,38 @@ body {
 .ant-Layout {
   min-height: 100vh;
 }
+
+.ant-layout-sider {
+  flex: 0 0 280px !important;
+  max-width: 280px !important;
+  min-width: 280px !important;
+  width: 280px !important;
+}
+
+.ant-layout-sider-collapsed {
+  flex: 0 0 80px !important;
+  max-width: 80px !important;
+  min-width: 80px !important;
+}
+
+.sm-logo {
+  display: none;
+}
+
+.ant-layout-sider-collapsed .sm-logo {
+  display: block;
+}
+
+.ant-layout-sider-collapsed .lg-logo {
+  display: none;
+}
+
+.logo {
+  background-color: #ffd333;
+  margin: 0px;
+  height: 64px;
+}
+
+main {
+  overflow-y: scroll;
+}

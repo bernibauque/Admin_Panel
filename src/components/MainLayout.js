@@ -1,12 +1,16 @@
 import React, { useState } from 'react';
+import { MenuFoldOutlined, MenuUnfoldOutlined, } from '@ant-design/icons';
 import {
-    MenuFoldOutlined,
-    MenuUnfoldOutlined,
-} from '@ant-design/icons';
+    AiOutlineDashboard,
+    AiOutlineShoppingCart,
+    AiOutlineUser,
+    AiOutlineBgColors,
+} from 'react-icons/ai';
+import { ImBlog } from 'react-icons/im';
+import { FaClipboard, FaBloggerB } from 'react-icons/fa';
 import { SiBrandfolder } from 'react-icons/si';
 import { BiCategoryAlt } from 'react-icons/bi';
 import { Layout, Menu, Button, theme } from 'antd';
-import { AiOutlineDashboard, AiOutlineShoppingCart, AiOutlineUser, } from 'react-icons/ai';
 import { useNavigate } from "react-router-dom";
 const { Header, Sider, Content } = Layout;
 const MainLayout = () => {
@@ -18,7 +22,13 @@ const MainLayout = () => {
     return (
         <Layout>
             <Sider trigger={null} collapsible collapsed={collapsed}>
-                <div className="demo-logo-vertical" />
+                <div className="logo" >
+                    <h2 className='text-white fs-5 text-center py-3 mb-0'>
+                        <span className='sm-logo'>GM</span>
+                        <span className='lg-logo'>Green Market</span>
+                    </h2>
+
+                </div>
                 <Menu
                     theme="dark"
                     mode="inline"
@@ -75,7 +85,54 @@ const MainLayout = () => {
                                     icon: <BiCategoryAlt className='fs-4' />,
                                     label: 'Lista de Categorias',
                                 },
-                            ]
+                                {
+                                    key: 'color',
+                                    icon: <AiOutlineBgColors className='fs-4' />,
+                                    label: 'Color',
+                                },
+                                {
+                                    key: 'list-color',
+                                    icon: <AiOutlineBgColors className='fs-4' />,
+                                    label: 'Lista de Colores',
+                                },
+                            ],
+                        },
+                        {
+                            key: 'orders',
+                            icon: <FaClipboard className='fs-4' />,
+                            label: 'Ordenes',
+                        },
+                        {
+                            key: 'blog',
+                            icon: <FaBloggerB className='fs-4' />,
+                            label: 'Blogs',
+                            children: [
+                                {
+                                    key: 'blog',
+                                    icon: <ImBlog className='fs-4' />,
+                                    label: 'Agregar Blog',
+                                },
+                                {
+                                    key: 'blog-list',
+                                    icon: <FaBloggerB className='fs-4' />,
+                                    label: 'Lista de Blogs',
+                                },
+                                {
+                                    key: 'blog-category',
+                                    icon: <ImBlog className='fs-4' />,
+                                    label: 'Agregar Categoria Blog',
+                                },
+                                {
+                                    key: 'blog-category-list',
+                                    icon: <FaBloggerB className='fs-4' />,
+                                    label: 'Lista de categorías de blogs',
+                                },
+                            ],
+                        },
+                        {
+                            key: 'enquiries',
+                            icon: <FaClipboard className='fs-4' />,
+                            label: 'Consultas',
                         },
                     ]}
                 />
@@ -104,7 +161,6 @@ const MainLayout = () => {
                         padding: 24,
                         minHeight: 280,
                         background: colorBgContainer,
-                        borderRadius: borderRadiusLG,
                     }}
                 >
                     Content
