@@ -2,17 +2,19 @@ import React, { useState } from 'react';
 import {
     MenuFoldOutlined,
     MenuUnfoldOutlined,
-    UploadOutlined,
-    UserOutlined,
-    VideoCameraOutlined,
 } from '@ant-design/icons';
+import { SiBrandfolder } from 'react-icons/si';
+import { BiCategoryAlt } from 'react-icons/bi';
 import { Layout, Menu, Button, theme } from 'antd';
+import { AiOutlineDashboard, AiOutlineShoppingCart, AiOutlineUser, } from 'react-icons/ai';
+import { useNavigate } from "react-router-dom";
 const { Header, Sider, Content } = Layout;
 const MainLayout = () => {
     const [collapsed, setCollapsed] = useState(false);
     const {
         token: { colorBgContainer, borderRadiusLG },
     } = theme.useToken();
+    const navigate = useNavigate();
     return (
         <Layout>
             <Sider trigger={null} collapsible collapsed={collapsed}>
@@ -20,22 +22,60 @@ const MainLayout = () => {
                 <Menu
                     theme="dark"
                     mode="inline"
-                    defaultSelectedKeys={['1']}
+                    defaultSelectedKeys={['']}
+                    onClick={({ key }) => {
+                        if (key == "signout") {
+                        } else {
+                            navigate(key)
+                        }
+                    }}
                     items={[
                         {
-                            key: '1',
-                            icon: <UserOutlined />,
-                            label: 'nav 1',
+                            key: '',
+                            icon: <AiOutlineDashboard className='fs-4' />,
+                            label: 'Panel',
                         },
                         {
-                            key: '2',
-                            icon: <VideoCameraOutlined />,
-                            label: 'nav 2',
+                            key: 'customers',
+                            icon: <AiOutlineUser className='fs-4' />,
+                            label: 'Clientes',
                         },
                         {
-                            key: '3',
-                            icon: <UploadOutlined />,
-                            label: 'nav 3',
+                            key: 'Catalog',
+                            icon: <AiOutlineShoppingCart className='fs-4' />,
+                            label: 'Catalogo',
+                            children: [
+                                {
+                                    key: 'product',
+                                    icon: <AiOutlineShoppingCart className='fs-4' />,
+                                    label: 'Añadir Producto',
+                                },
+                                {
+                                    key: 'product-list',
+                                    icon: <AiOutlineShoppingCart className='fs-4' />,
+                                    label: 'Listado de Productos',
+                                },
+                                {
+                                    key: 'brand',
+                                    icon: <SiBrandfolder className='fs-4' />,
+                                    label: 'Marca',
+                                },
+                                {
+                                    key: 'list-brand',
+                                    icon: <SiBrandfolder className='fs-4' />,
+                                    label: 'Lista de Marcas',
+                                },
+                                {
+                                    key: 'category',
+                                    icon: <BiCategoryAlt className='fs-4' />,
+                                    label: 'Categoria',
+                                },
+                                {
+                                    key: 'list-category',
+                                    icon: <BiCategoryAlt className='fs-4' />,
+                                    label: 'Lista de Categorias',
+                                },
+                            ]
                         },
                     ]}
                 />
