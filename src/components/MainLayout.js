@@ -1,12 +1,15 @@
 import React, { useState } from 'react';
-import { MenuFoldOutlined, MenuUnfoldOutlined, } from '@ant-design/icons';
 import {
     AiOutlineDashboard,
     AiOutlineShoppingCart,
     AiOutlineUser,
     AiOutlineBgColors,
+    AiOutlinePicLeft,
+    AiOutlinePicRight,
 } from 'react-icons/ai';
+import { Outlet } from 'react-router-dom';
 import { ImBlog } from 'react-icons/im';
+import { IoIosNotifications } from 'react-icons/io';
 import { FaClipboard, FaBloggerB } from 'react-icons/fa';
 import { SiBrandfolder } from 'react-icons/si';
 import { BiCategoryAlt } from 'react-icons/bi';
@@ -27,7 +30,6 @@ const MainLayout = () => {
                         <span className='sm-logo'>GM</span>
                         <span className='lg-logo'>Green Market</span>
                     </h2>
-
                 </div>
                 <Menu
                     theme="dark"
@@ -125,7 +127,7 @@ const MainLayout = () => {
                                 {
                                     key: 'blog-category-list',
                                     icon: <FaBloggerB className='fs-4' />,
-                                    label: 'Lista de categorías de blogs',
+                                    label: 'Lista de cat de blogs',
                                 },
                             ],
                         },
@@ -137,8 +139,9 @@ const MainLayout = () => {
                     ]}
                 />
             </Sider>
-            <Layout>
+            <Layout className='site-layout'>
                 <Header
+                    className='d-flex justify-content-between ps-1 pe-5'
                     style={{
                         padding: 0,
                         background: colorBgContainer,
@@ -146,7 +149,7 @@ const MainLayout = () => {
                 >
                     <Button
                         type="text"
-                        icon={collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
+                        icon={collapsed ? <AiOutlinePicRight /> : <AiOutlinePicLeft />}
                         onClick={() => setCollapsed(!collapsed)}
                         style={{
                             fontSize: '16px',
@@ -154,6 +157,28 @@ const MainLayout = () => {
                             height: 64,
                         }}
                     />
+                    <div className='d-flex gap-4 align-items-center'>
+                        <div className='position-relative'>
+                            <IoIosNotifications className='fs-4' />
+                            <span className='badge bg-warning rounded-circle p-1 position-absolute'>
+                                3
+                            </span>
+                        </div>
+                        <div className='d-flex gap-3 align-items-center'>
+                            <div>
+                                <img
+                                    width={40}
+                                    height={40}
+                                    src='/greenmarket.png'
+                                    alt=''
+                                />
+                            </div>
+                            <div>
+                                <h5 className='mb-0'>Adrian Cisneros</h5>
+                                <p className='mb-0'>adriancisneros@gmail.com</p>
+                            </div>
+                        </div>
+                    </div>
                 </Header>
                 <Content
                     style={{
@@ -163,7 +188,7 @@ const MainLayout = () => {
                         background: colorBgContainer,
                     }}
                 >
-                    Content
+                    <Outlet />
                 </Content>
             </Layout>
         </Layout>
