@@ -32,7 +32,7 @@ function App() {
           <Route path='list-color' element={<Colorlist />} />
           <Route path='list-category' element={<Categorylist />} />
           <Route path='list-brand' element={<Brandlist />} />
-          <Route path='list-product' element={<Productlist />} />
+          <Route path='product-list' element={<Productlist />} />
         </Route>
       </Routes>
     </Router>
