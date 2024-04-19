@@ -10,10 +10,10 @@ import Bloglist from './pages/Bloglist';
 import Blogcatlist from './pages/Blogcatlist';
 import Orders from './pages/Orders';
 import Customers from './pages/Customers';
-import Colorlist from './Colorlist';
-import Categorylist from './Categorylist';
-import Brandlist from './Brandlist';
-import Productlist from './Productlist';
+import Colorlist from './pages/Colorlist';
+import Categorylist from './pages/Categorylist';
+import Brandlist from './pages/Brandlist';
+import Productlist from './pages/Productlist';
 
 function App() {
   return (
@@ -32,7 +32,7 @@ function App() {
           <Route path='list-color' element={<Colorlist />} />
           <Route path='list-category' element={<Categorylist />} />
           <Route path='list-brand' element={<Brandlist />} />
-          <Route path='product-list' element={<Productlist />} />
+          <Route path='list-product' element={<Productlist />} />
         </Route>
       </Routes>
     </Router>
