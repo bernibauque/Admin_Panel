@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import CustomInput from '../components/CustomInput';
 import ReactQuill from "react-quill";
+import { Stepper } from "react-form-stepper";
 import "react-quill/dist/quill.snow.css";
 
 const Addblog = () => {
@@ -11,6 +12,10 @@ const Addblog = () => {
     return (
         <div>
             <h3 className='mb-4'>Agregar Blog</h3>
+            <Stepper
+                steps={[{ label: "Agregar detalles del Blog" }, { label: "Subir Imagenes" }, { label: "Finalizar" }]}
+                activeStep={1}
+            />
             <div className=''>
                 <form action=''>
                     <CustomInput type='text' label='Ingrese Titulo del Blog' />
