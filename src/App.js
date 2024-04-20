@@ -19,6 +19,7 @@ import Addblogcat from './pages/Addblogcat';
 import Addcolor from './pages/Addcolor';
 import Addcat from './pages/Addcat';
 import Addbrand from './pages/Addbrand';
+import Addproduct from './pages/Addproduct';
 
 function App() {
   return (
@@ -43,6 +44,7 @@ function App() {
           <Route path='list-brand' element={<Brandlist />} />
           <Route path='brand' element={<Addbrand />} />
           <Route path='list-product' element={<Productlist />} />
+          <Route path='product' element={<Addproduct />} />
         </Route>
       </Routes>
     </Router>
