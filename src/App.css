@@ -4,16 +4,23 @@
     --color-47ad24: #47ad24;
     --color-e52e2e: #e52e2e;
     --color-828599: #828599;
+    --color-3d464d: #ed464d;
+    --color-c3d4da: #ced4da;
 }
 
 .green {
-    color: green;
+    color: var(--color-47ad24);
 }
 
 .red {
-    color: red;
+    color: var(--color-212529);
 }
 
 .quill {
     background-color: white;
 }
+
+.form-control {
+    box-shadow: none;
+    border-color: var(--color-c3d4da);
+  }
