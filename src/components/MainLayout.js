@@ -184,13 +184,31 @@ const MainLayout = () => {
                                 <h5 className='mb-0'>Adrian Cisneros</h5>
                                 <p className='mb-0'>adriancisneros@gmail.com</p>
                             </div>
-                            <div
-                                className='dropdown-menu'
-                                aria-label='dropdownMenuLink'
-                            >
-                                <li><a className="dropdown-item" href="#">Action</a></li>
-                                <li><a className="dropdown-item" href="#">Another action</a></li>
-                                <li><a className="dropdown-item" href="#">Something else here</a></li>
+                            <div className='dropdown-menu' aria-label='dropdownMenuLink'>
+                                <li>
+                                    <a
+                                        className="dropdown-item py-1 mb-1"
+                                        style={{ height: 'auto', lineHeight: '20px' }}
+                                        href="#">
+                                        Action
+                                    </a>
+                                </li>
+                                <li>
+                                    <a
+                                        className="dropdown-item py-1 mb-1"
+                                        style={{ height: 'auto', lineHeight: '20px' }}
+                                        href="#">
+                                        Another action
+                                    </a>
+                                </li>
+                                <li>
+                                    <a
+                                        className="dropdown-item py-1 mb-1"
+                                        style={{ height: 'auto', lineHeight: '20px' }}
+                                        href="#">
+                                        Something else here
+                                    </a>
+                                </li>
                             </div>
                         </div>
                     </div>
