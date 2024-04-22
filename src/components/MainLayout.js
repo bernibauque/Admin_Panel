@@ -164,7 +164,9 @@ const MainLayout = () => {
                                 3
                             </span>
                         </div>
-                        <div className='d-flex gap-3 align-items-center'>
+                        <div
+                            className='d-flex gap-3 align-items-center dropdown'
+                        >
                             <div>
                                 <img
                                     width={40}
@@ -173,14 +175,23 @@ const MainLayout = () => {
                                     alt=''
                                 />
                             </div>
-                            <div>
+                            <div
+                                role='button'
+                                id="dropdownMenuLink"
+                                data-bs-toggle='dropdown'
+                                aria-expanded='false'
+                            >
                                 <h5 className='mb-0'>Adrian Cisneros</h5>
                                 <p className='mb-0'>adriancisneros@gmail.com</p>
                             </div>
                             <div
                                 className='dropdown-menu'
                                 aria-label='dropdownMenuLink'
-                            ></div>
+                            >
+                                <li><a className="dropdown-item" href="#">Action</a></li>
+                                <li><a className="dropdown-item" href="#">Another action</a></li>
+                                <li><a className="dropdown-item" href="#">Something else here</a></li>
+                            </div>
                         </div>
                     </div>
                 </Header>
