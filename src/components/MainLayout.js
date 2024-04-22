@@ -7,7 +7,7 @@ import {
     AiOutlinePicLeft,
     AiOutlinePicRight,
 } from 'react-icons/ai';
-import { Outlet } from 'react-router-dom';
+import { Link, Outlet } from 'react-router-dom';
 import { ImBlog } from 'react-icons/im';
 import { IoIosNotifications } from 'react-icons/io';
 import { FaClipboard, FaBloggerB } from 'react-icons/fa';
@@ -186,28 +186,20 @@ const MainLayout = () => {
                             </div>
                             <div className='dropdown-menu' aria-label='dropdownMenuLink'>
                                 <li>
-                                    <a
+                                    <Link
                                         className="dropdown-item py-1 mb-1"
                                         style={{ height: 'auto', lineHeight: '20px' }}
-                                        href="#">
-                                        Action
-                                    </a>
+                                        to="/">
+                                        Ver Perfil
+                                    </Link>
                                 </li>
                                 <li>
-                                    <a
+                                    <Link
                                         className="dropdown-item py-1 mb-1"
                                         style={{ height: 'auto', lineHeight: '20px' }}
-                                        href="#">
-                                        Another action
-                                    </a>
-                                </li>
-                                <li>
-                                    <a
-                                        className="dropdown-item py-1 mb-1"
-                                        style={{ height: 'auto', lineHeight: '20px' }}
-                                        href="#">
-                                        Something else here
-                                    </a>
+                                        to="/">
+                                        Cerrar Sesion
+                                    </Link>
                                 </li>
                             </div>
                         </div>
