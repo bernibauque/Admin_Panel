@@ -10,7 +10,7 @@ const Forgotpassword = () => {
             <br />
             <br />
             <div className='my-5 w-25 bg-white rounded-3 mx-auto p-4'>
-                <h3 className='text-center'>Has olvidado tu contraseña?</h3>
+                <h3 className='text-center title'>Has olvidado tu contraseña?</h3>
                 <p className='text-center text-muted small'>
                     Ingresa tu email para regenerar tu contraseña.
                 </p>

@@ -23,4 +23,10 @@
 .form-control {
     box-shadow: none;
     border-color: var(--color-c3d4da);
+}
+
+.title {
+    font: 28px;
+    font-family: Roboto !important;
+    /*color: var(--color-212529);*/
   }

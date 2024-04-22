@@ -79,7 +79,7 @@ const Dashboard = () => {
 
     return (
         <div>
-            <h3 className='mb-4'>Panel</h3>
+            <h3 className='mb-4 title'>Panel</h3>
             <div className='d-flex justify-content-between align-items-center gap-3'>
                 <div className='d-flex justify-content-between align-items-end flex-grow-1 bg-white p-3 roudned-3'>
                     <div>
@@ -116,13 +116,13 @@ const Dashboard = () => {
                 </div>
             </div>
             <div className='mt-4'>
-                <h3 className='mb-4'>Estadística de Ingresos</h3>
+                <h3 className='mb-4 title'>Estadística de Ingresos</h3>
                 <div>
                     <Column {...config} />
                 </div>
             </div>
             <div className='mt-4'>
-                <h3 className='mb-4'>Ordenes Recientes</h3>
+                <h3 className='mb-4 title'>Ordenes Recientes</h3>
                 <div>
                     <Table columns={columns} dataSource={data1} />
                 </div>

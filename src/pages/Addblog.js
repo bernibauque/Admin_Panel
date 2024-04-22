@@ -33,7 +33,7 @@ const Addblog = () => {
     };
     return (
         <div>
-            <h3 className='mb-4'>Agregar Blog</h3>
+            <h3 className='mb-4 title'>Agregar Blog</h3>
             <div className=''>
                 <form action=''>
                     <Dragger {...props}>

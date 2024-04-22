@@ -11,7 +11,7 @@ const Login = () => {
             <br />
             <br />
             <div className='my-5 w-25 bg-white rounded-3 mx-auto p-4'>
-                <h3 className='text-center'>Acceso</h3>
+                <h3 className='text-center title'>Acceso</h3>
                 <p className='text-center text-muted small'>Ingresa a tu cuenta para continuar.</p>
                 <form action=''>
                     <CustomInput type="text" label="Escribe tu email" id="email" />
