@@ -177,6 +177,10 @@ const MainLayout = () => {
                                 <h5 className='mb-0'>Adrian Cisneros</h5>
                                 <p className='mb-0'>adriancisneros@gmail.com</p>
                             </div>
+                            <div
+                                className='dropdown-menu'
+                                aria-label='dropdownMenuLink'
+                            ></div>
                         </div>
                     </div>
                 </Header>
