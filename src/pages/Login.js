@@ -3,8 +3,10 @@ import CustomInput from '../components/CustomInput';
 import { Link } from 'react-router-dom';
 import { useFormik } from "formik";
 import * as Yup from "yup";
+import { useDispatch, useSelector } from "react-redux";
 
 const Login = () => {
+    const dispatch = useDispatch();
     let schema = Yup.object().shape({
         email: Yup.string().
             email("El email debe ser valido").
