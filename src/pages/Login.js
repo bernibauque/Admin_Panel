@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import { useDispatch, useSelector } from "react-redux";
+import { login } from "../features/auth/authSlice"
 
 const Login = () => {
     const dispatch = useDispatch();
@@ -20,6 +21,7 @@ const Login = () => {
         },
         validationSchema: schema,
         onSubmit: (values) => {
+            dispatch(login(values));
             alert(JSON.stringify(values, null, 2));
         },
     });
