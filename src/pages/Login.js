@@ -53,9 +53,11 @@ const Login = () => {
                         val={formik.values.password}
                         onCh={formik.handleChange('password')}
                     />
-                    {formik.touched.password && formik.errors.password ? (
-                        <div>{formik.errors.password}</div>
-                    ) : null}
+                    <div className='error'>
+                        {formik.touched.password && formik.errors.password ? (
+                            <div>{formik.errors.password}</div>
+                        ) : null}
+                    </div>
                     <div className='mb-3 text-end'>
                         <Link to='forgot-password'>
                             Olvidaste tu contraseña?
