@@ -1,8 +1,18 @@
 import React from 'react'
 import CustomInput from '../components/CustomInput';
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
+import { useFormik } from "formik";
 
 const Login = () => {
+    const formik = useFormik({
+        initialValues: {
+            email: "",
+            password: "",
+        },
+        onSubmit: (values) => {
+            alert(JSON.stringify(values, null, 2));
+        },
+    });
     return (
         <div className='py-5' style={{ background: "#ffd333", minHeight: "100vh" }}>
             <br />
@@ -13,9 +23,23 @@ const Login = () => {
             <div className='my-5 w-25 bg-white rounded-3 mx-auto p-4'>
                 <h3 className='text-center title'>Acceso</h3>
                 <p className='text-center text-muted small'>Ingresa a tu cuenta para continuar.</p>
-                <form action=''>
-                    <CustomInput type="text" label="Escribe tu email" id="email" />
-                    <CustomInput type="password" label="Escribe tu contraseña" id="pass" />
+                <form action='' onSubmit={formik.handleSubmit}>
+                    <CustomInput
+                        type="text"
+                        name='email'
+                        label="Escribe tu email"
+                        id="email"
+                        val={formik.values.email}
+                        onCh={formik.handleChange('email')}
+                    />
+                    <CustomInput
+                        type="password"
+                        name='password'
+                        label="Escribe tu contraseña"
+                        id="pass"
+                        val={formik.values.password}
+                        onCh={formik.handleChange('password')}
+                    />
                     <div className='mb-3 text-end'>
                         <Link to='forgot-password'>
                             Olvidaste tu contraseña?
