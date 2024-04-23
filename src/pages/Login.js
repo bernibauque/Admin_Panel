@@ -6,15 +6,17 @@ import * as Yup from "yup";
 
 const Login = () => {
     let schema = Yup.object().shape({
-        email: Yup.string().email().required(),
-        password: Yup.string().required(),
+        email: Yup.string().
+            email("El email debe ser valido").
+            required("El email es requerido"),
+        password: Yup.string().required("La contraseña es requerida"),
     });
     const formik = useFormik({
         initialValues: {
             email: "",
             password: "",
         },
-        validationSchema: f,
+        validationSchema: schema,
         onSubmit: (values) => {
             alert(JSON.stringify(values, null, 2));
         },
@@ -38,9 +40,11 @@ const Login = () => {
                         val={formik.values.email}
                         onCh={formik.handleChange('email')}
                     />
-                    {formik.touched.email && formik.errors.email ? (
-                        <div>{formik.errors.email}</div>
-                    ) : null}
+                    <div className='error'>
+                        {formik.touched.email && formik.errors.email ? (
+                            <div>{formik.errors.email}</div>
+                        ) : null}
+                    </div>
                     <CustomInput
                         type="password"
                         name='password'
@@ -49,6 +53,9 @@ const Login = () => {
                         val={formik.values.password}
                         onCh={formik.handleChange('password')}
                     />
+                    {formik.touched.password && formik.errors.password ? (
+                        <div>{formik.errors.password}</div>
+                    ) : null}
                     <div className='mb-3 text-end'>
                         <Link to='forgot-password'>
                             Olvidaste tu contraseña?
