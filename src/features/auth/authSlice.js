@@ -3,19 +3,13 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import authService from "./authService";
 
-// Estado inicial del slice de autenticación.
-const userDefaultState = {
-    _id: null,
-    firstname: null,
-    lastname: null,
-    email: null,
-    mobile: null,
-    token: null,
-};
+const getUserfromLocalStorage = localStorage.getItem("user")
+    ? JSON.parse(localStorage.getItem("user"))
+    : null;
 
 // Estado inicial del slice de autenticación completo.
 const initialState = {
-    user: userDefaultState, // Información del usuario
+    user: getUserfromLocalStorage, // Información del usuario
     isError: false, // Bandera para manejar errores
     isLoading: false, // Bandera para indicar si la aplicación está cargando
     isSuccess: false, // Bandera para indicar si la operación fue exitosa
