@@ -7,11 +7,11 @@ import { useDispatch, useSelector } from "react-redux";
 import { login } from "../features/auth/authSlice"
 
 let schema = Yup.object().shape({
-    email: yup
+    email: Yup
         .string()
         .email("El email debe ser valido")
         .required("El email es requerido"),
-    password: yup.string().required("La contraseña es requerida"),
+    password: Yup.string().required("La contraseña es requerida"),
 });
 const Login = () => {
     const dispatch = useDispatch();
@@ -28,7 +28,7 @@ const Login = () => {
     });
     const authState = useSelector((state) => state);
 
-    const { user, isLoading, isError, isSuccess, message } = authState.auth;
+    const { user, isError, isSuccess, isLoading, message } = authState.auth;
 
     useEffect(() => {
         if (isSuccess) {
@@ -53,29 +53,26 @@ const Login = () => {
                 <form action='' onSubmit={formik.handleSubmit}>
                     <CustomInput
                         type="text"
-                        name='email'
                         label="Escribe tu email"
                         id="email"
-                        val={formik.values.email}
+                        name='email'
                         onCh={formik.handleChange('email')}
+                        onBlr={formik.handleBlur("email")}
+                        val={formik.values.email}
                     />
-                    <div className='error'>
-                        {formik.touched.email && formik.errors.email ? (
-                            <div>{formik.errors.email}</div>
-                        ) : null}
+                    <div className='error mt-2'>
+                        {formik.touched.email && formik.errors.email}
                     </div>
                     <CustomInput
                         type="password"
-                        name='password'
                         label="Escribe tu contraseña"
                         id="pass"
-                        val={formik.values.password}
+                        name='password'
                         onCh={formik.handleChange('password')}
+                        val={formik.values.password}
                     />
-                    <div className='error'>
-                        {formik.touched.password && formik.errors.password ? (
-                            <div>{formik.errors.password}</div>
-                        ) : null}
+                    <div className='error mt-2'>
+                        {formik.touched.password && formik.errors.password}
                     </div>
                     <div className='mb-3 text-end'>
                         <Link to='forgot-password'>
