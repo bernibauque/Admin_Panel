@@ -19,11 +19,11 @@ const initialState = {
 // Definición del thunk asíncrono para iniciar sesión.
 // Este thunk es utilizado para iniciar sesión en la aplicación.
 export const login = createAsyncThunk(
-    "auth/admin-login",
-    async (user, thunkAPI) => {
+    "auth/login",
+    async (userData, thunkAPI) => {
         try {
             // Llamada al servicio authService para iniciar sesión.
-            return await authService.login(user);
+            return await authService.login(userData);
         } catch (error) {
             // Si hay un error, se rechaza la operación con el valor del error.
             return thunkAPI.rejectWithValue(error);
