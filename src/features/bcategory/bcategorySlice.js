@@ -30,7 +30,7 @@ export const pCategorySlice = createSlice({
                 state.isLoading = false;
                 state.isError = false;
                 state.isSuccess = true;
-                state.pCategories = action.payload;
+                state.bCategories = action.payload;
             })
             .addCase(getCategories.rejected, (state, action) => {
                 state.isLoading = false;
