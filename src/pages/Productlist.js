@@ -9,24 +9,28 @@ import Link from 'antd/es/typography/Link';
 
 const columns = [
     {
-        title: 'SNo',
+        title: 'Numero',
         dataIndex: 'key',
     },
     {
         title: 'Titulo',
         dataIndex: 'title',
+        sorter: (a, b) => a.title.length - b.title.length,
     },
     {
         title: 'Marca',
         dataIndex: 'brand',
+        sorter: (a, b) => a.brand.length - b.brand.length,
     },
     {
         title: 'Categoria',
         dataIndex: 'category',
+        sorter: (a, b) => a.category.length - b.category.length,
     },
     {
         title: 'Precio',
         dataIndex: 'price',
+        sorter: (a, b) => a.price - b.price,
     },
     {
         title: 'Accion',
@@ -47,7 +51,7 @@ const Productlist = () => {
             title: productState[i].title,
             brand: productState[i].brand,
             category: productState[i].category,
-            price: `$ ${productState[i].price}`,
+            price: `${productState[i].price}`,
             action:
                 <>
                     <Link className='fs-3 text-danger' to='/'>
