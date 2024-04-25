@@ -87,16 +87,6 @@ const MainLayout = () => {
                                     icon: <BiCategoryAlt className='fs-4' />,
                                     label: 'Lista de Categorias',
                                 },
-                                {
-                                    key: 'color',
-                                    icon: <AiOutlineBgColors className='fs-4' />,
-                                    label: 'Color',
-                                },
-                                {
-                                    key: 'list-color',
-                                    icon: <AiOutlineBgColors className='fs-4' />,
-                                    label: 'Lista de Colores',
-                                },
                             ],
                         },
                         {
