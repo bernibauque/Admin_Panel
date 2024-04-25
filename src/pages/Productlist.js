@@ -33,7 +33,7 @@ const columns = [
         sorter: (a, b) => a.price - b.price,
     },
     {
-        title: 'Accion',
+        title: 'Acciones',
         dataIndex: 'action',
     },
 ];
@@ -52,15 +52,16 @@ const Productlist = () => {
             brand: productState[i].brand,
             category: productState[i].category,
             price: `${productState[i].price}`,
-            action:
+            action: (
                 <>
-                    <Link className='fs-3 text-danger' to='/'>
+                    <Link to='/' className='fs-3 text-danger'>
                         <BiEdit />
                     </Link>
                     <Link className='ms-3 fs-3 text-danger' to='/'>
                         <AiFillDelete />
                     </Link>
                 </>
+            ),
         });
     }
     return (
