@@ -1,7 +1,7 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import customerService from "./customerService";
 
-export const getUsers = createAsyncThunk("auth/login", async (thunkAPI) => {
+export const getUsers = createAsyncThunk("customer/get-customers", async (thunkAPI) => {
     try {
         return await customerService.getUsers();
     } catch (error) {
