@@ -6,6 +6,7 @@ import brandReducer from "../features/brand/brandSlice";
 import pcategoryReducer from "../features/pcategory/pcategorySlice";
 import bcategoryReducer from "../features/bcategory/bcategorySlice";
 import blogReducer from "../features/blogs/blogSlice";
+import enquiryReducer from "../features/enquiry/enquirySlice";
 
 export const store = configureStore({
     reducer: {
@@ -16,5 +17,6 @@ export const store = configureStore({
         pCategory: pcategoryReducer,
         bCategory: bcategoryReducer,
         blogs: blogReducer,
+        enquiry: enquiryReducer,
     },
 });
