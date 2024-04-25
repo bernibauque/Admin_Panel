@@ -17,7 +17,7 @@ const initialState = {
     isSuccess: false,
     message: "",
 };
-export const blogsSlice = createSlice({
+export const blogSlice = createSlice({
     name: "blogs",
     initialState,
     reducers: {},
@@ -41,4 +41,4 @@ export const blogsSlice = createSlice({
     },
 });
 
-export default blogsSlice.reducer;
+export default blogSlice.reducer;

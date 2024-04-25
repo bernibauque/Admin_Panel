@@ -1,35 +1,56 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Table } from "antd";
+import { useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
+import { BiEdit } from "react-icons/bi";
+import { AiFillDelete } from "react-icons/ai";
+import { getBlogs } from '../features/blogs/blogSlice';
 
 const columns = [
     {
-        title: 'SNo',
+        title: 'Numero',
         dataIndex: 'key',
     },
     {
-        title: 'Name',
+        title: 'Titulo',
         dataIndex: 'name',
     },
     {
-        title: 'Product',
-        dataIndex: 'product',
+        title: 'Categoria',
+        dataIndex: 'category',
     },
     {
-        title: 'Status',
-        dataIndex: 'status',
+        title: 'Acciones',
+        dataIndex: 'action',
     },
 ];
-const data1 = [];
-for (let i = 0; i < 46; i++) {
-    data1.push({
-        key: i,
-        name: `Edward King ${i}`,
-        product: 32,
-        status: `London, Park Lane no. ${i}`,
-    });
-}
 
 const Bloglist = () => {
+    const dispatch = useDispatch();
+    useEffect(() => {
+        dispatch(getBlogs());
+    }, []);
+    const getBlogsState = useSelector((state) => state.blogs.blogs);
+    const data1 = [];
+    for (let i = 0; i < getBlogsState.length; i++) {
+        data1.push({
+            key: i + 1,
+            name: getBlogsState[i].title,
+            category: getBlogsState[i].category,
+            status: `London, Park Lane no. ${i}`,
+            action: (
+                <>
+                    <Link to='/' className='fs-3 text-danger'>
+                        <BiEdit />
+                    </Link>
+                    <Link className='ms-3 fs-3 text-danger' to='/'>
+                        <AiFillDelete />
+                    </Link>
+                </>
+            ),
+        });
+    }
     return (
         <div>
             <h3 className='mb-4 title'>Listas de Blogs</h3>
