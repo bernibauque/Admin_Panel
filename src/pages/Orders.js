@@ -17,12 +17,8 @@ const columns = [
         dataIndex: 'name',
     },
     {
-        title: 'Product',
-        dataIndex: 'product',
-    },
-    {
-        title: 'Status',
-        dataIndex: 'status',
+        title: 'Acciones',
+        dataIndex: 'action',
     },
 ];
 
@@ -36,7 +32,7 @@ const Orders = () => {
     for (let i = 0; i < orderState.length; i++) {
         data1.push({
             key: i + 1,
-            name: orderState[i].title,
+            name: orderState[i].orderby.firstname,
             action: (
                 <>
                     <Link to='/' className='fs-3 text-danger'>

@@ -20,7 +20,7 @@ const login = async (user) => {
 };
 
 const getOrders = async () => {
-    const response = await axios.get(`${base_url}user/get-orders`, config);
+    const response = await axios.get(`${base_url}user/getallorders`, config);
     return response.data;
 };
 
