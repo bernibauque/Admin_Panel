@@ -1,5 +1,11 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Table } from "antd";
+import { getOrders } from "../features/auth/authSlice"
+import { useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
+import { BiEdit } from "react-icons/bi";
+import { AiFillDelete } from "react-icons/ai";
 
 const columns = [
     {
@@ -19,17 +25,30 @@ const columns = [
         dataIndex: 'status',
     },
 ];
-const data1 = [];
-for (let i = 0; i < 46; i++) {
-    data1.push({
-        key: i,
-        name: `Edward King ${i}`,
-        product: 32,
-        status: `London, Park Lane no. ${i}`,
-    });
-}
 
 const Orders = () => {
+    const dispatch = useDispatch();
+    useEffect(() => {
+        dispatch(getOrders());
+    }, []);
+    const orderState = useSelector((state) => state.auth.orders);
+    const data1 = [];
+    for (let i = 0; i < orderState.length; i++) {
+        data1.push({
+            key: i + 1,
+            name: orderState[i].title,
+            action: (
+                <>
+                    <Link to='/' className='fs-3 text-danger'>
+                        <BiEdit />
+                    </Link>
+                    <Link className='ms-3 fs-3 text-danger' to='/'>
+                        <AiFillDelete />
+                    </Link>
+                </>
+            ),
+        });
+    }
     return (
         <div>
             <h3 className='mb-4 title'>Ordenes</h3>
