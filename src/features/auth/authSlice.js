@@ -1,5 +1,3 @@
-// Importaciones de Redux Toolkit, incluyendo createSlice y createAsyncThunk,
-// y el servicio authService que maneja la lógica de autenticación.
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import authService from "./authService";
 
@@ -7,57 +5,78 @@ const getUserfromLocalStorage = localStorage.getItem("user")
     ? JSON.parse(localStorage.getItem("user"))
     : null;
 
-// Estado inicial del slice de autenticación completo.
 const initialState = {
-    user: getUserfromLocalStorage, // Información del usuario
-    isError: false, // Bandera para manejar errores
-    isLoading: false, // Bandera para indicar si la aplicación está cargando
-    isSuccess: false, // Bandera para indicar si la operación fue exitosa
-    message: "", // Mensaje de error u otra información relevante
+    user: getUserfromLocalStorage,
+    orders: [],
+    isError: false,
+    isLoading: false,
+    isSuccess: false,
+    message: "",
 };
 
-// Definición del thunk asíncrono para iniciar sesión.
-// Este thunk es utilizado para iniciar sesión en la aplicación.
 export const login = createAsyncThunk(
     "auth/login",
     async (userData, thunkAPI) => {
         try {
-            // Llamada al servicio authService para iniciar sesión.
             return await authService.login(userData);
         } catch (error) {
-            // Si hay un error, se rechaza la operación con el valor del error.
             return thunkAPI.rejectWithValue(error);
         }
     }
 );
 
-// Creación del slice de Redux llamado authSlice.
+export const getOrders = createAsyncThunk(
+    "order/get-orders",
+    async (thunkAPI) => {
+        try {
+            return await authService.getOrders();
+        } catch (error) {
+            return thunkAPI.rejectWithValue(error);
+        }
+    }
+);
+
+
 export const authSlice = createSlice({
-    name: "auth", // Nombre del slice
-    initialState, // Estado inicial
-    reducers: {}, // Reducers adicionales (en este caso no hay ninguno definido)
-    extraReducers: (builder) => {
-        // Reducer para manejar el estado cuando se está realizando el inicio de sesión.
-        builder.addCase(login.pending, (state) => {
-            state.isLoading = true; // Se establece isLoading en true mientras se carga
-        });
-
-        // Reducer para manejar el estado cuando el inicio de sesión es exitoso.
-        builder.addCase(login.fulfilled, (state, action) => {
-            state.isLoading = false; // Se establece isLoading en false
-            state.isSuccess = true; // Se marca la operación como exitosa
-            state.user = action.payload; // Se actualiza la información del usuario
-        });
-
-        // Reducer para manejar el estado cuando el inicio de sesión es rechazado o falla.
-        builder.addCase(login.rejected, (state, action) => {
-            state.isLoading = false; // Se establece isLoading en false
-            state.isError = true; // Se marca la operación como con error
-            state.isSuccess = false; // Se marca la operación como no exitosa
-            state.user = null; // Se limpia la información del usuario
-        });
+    name: "auth",
+    initialState: initialState,
+    reducers: {},
+    extraReducers: (buildeer) => {
+        buildeer
+            .addCase(login.pending, (state) => {
+                state.isLoading = true;
+            })
+            .addCase(login.fulfilled, (state, action) => {
+                state.isError = false;
+                state.isLoading = false;
+                state.isSuccess = true;
+                state.user = action.payload;
+                state.message = "success";
+            })
+            .addCase(login.rejected, (state, action) => {
+                state.isError = true;
+                state.isSuccess = false;
+                state.message = action.error;
+                state.isLoading = false;
+            })
+            .addCase(getOrders.pending, (state) => {
+                state.isLoading = true;
+            })
+            .addCase(getOrders.fulfilled, (state, action) => {
+                state.isError = false;
+                state.isLoading = false;
+                state.isSuccess = true;
+                state.orders = action.payload;
+                state.message = "success";
+            })
+            .addCase(getOrders.rejected, (state, action) => {
+                state.isError = true;
+                state.isSuccess = false;
+                state.message = action.error;
+                state.isLoading = false;
+            })
     },
 });
 
-// Exportación del reducer del slice de autenticación.
+
 export default authSlice.reducer;

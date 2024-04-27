@@ -9,7 +9,8 @@ export const getCategories = createAsyncThunk(
         } catch (error) {
             return thunkAPI.rejectWithValue(error);
         }
-    });
+    }
+);
 const initialState = {
     bCategories: [],
     isError: false,
