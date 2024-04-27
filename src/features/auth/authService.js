@@ -1,6 +1,15 @@
-// lógica para realizar la solicitud de inicio de sesión al servidor utilizando Axios. 
 import axios from "axios";
 import { base_url } from "../../utils/base_url";
+const getTokenFromLocalStorage = localStorage.getItem("user")
+    ? JSON.parse(localStorage.getItem("user"))
+    : null
+
+const config = {
+    headers: {
+        Autorization: `Bearer ${getTokenFromLocalStorage.token}`,
+        Accept: "application/json",
+    },
+};
 
 const login = async (user) => {
     const response = await axios.post(`${base_url}user/admin-login`, user);
@@ -11,7 +20,7 @@ const login = async (user) => {
 };
 
 const getOrders = async () => {
-    const response = await axios.get(`${base_url}user/get-orders`);
+    const response = await axios.get(`${base_url}user/get-orders`, config);
     return response.data;
 };
 
