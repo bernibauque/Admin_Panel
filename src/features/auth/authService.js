@@ -2,11 +2,11 @@ import axios from "axios";
 import { base_url } from "../../utils/base_url";
 const getTokenFromLocalStorage = localStorage.getItem("user")
     ? JSON.parse(localStorage.getItem("user"))
-    : null
+    : null;
 
 const config = {
     headers: {
-        Autorization: `Bearer ${getTokenFromLocalStorage.token}`,
+        Authorization: `Bearer ${getTokenFromLocalStorage.token}`,
         Accept: "application/json",
     },
 };
@@ -28,4 +28,5 @@ const authService = {
     login,
     getOrders
 };
+
 export default authService;
