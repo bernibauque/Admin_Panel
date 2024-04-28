@@ -9,11 +9,11 @@ import { AiFillDelete } from "react-icons/ai";
 
 const columns = [
     {
-        title: 'SNo',
+        title: 'Numero',
         dataIndex: 'key',
     },
     {
-        title: 'Name',
+        title: 'Nombre',
         dataIndex: 'name',
     },
     {
