@@ -28,5 +28,4 @@ const authService = {
     login,
     getOrders
 };
-
 export default authService;
