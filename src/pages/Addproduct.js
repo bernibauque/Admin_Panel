@@ -22,7 +22,7 @@ const Addproduct = () => {
     }, []);
 
     const brandState = useSelector((state) => state.brand.brands);
-    const catState = useSelector((state) => state.brand.brands);
+    const catState = useSelector((state) => state.pCategory.pCategories);
 
     const formik = useFormik({
         initialValues: {
@@ -88,8 +88,16 @@ const Addproduct = () => {
                             );
                         })}
                     </select>
+
                     <select name='' className='form-control py-3 mb-3' id=''>
                         <option value=''>Seleccione Categoria</option>
+                        {catState.map((i, j) => {
+                            return (
+                                <option key={j} value={i.title}>
+                                    {i.title}
+                                </option>
+                            );
+                        })}
                     </select>
 
                     <CustomInput type='number' label='Ingrese Cantidad del Producto' />
