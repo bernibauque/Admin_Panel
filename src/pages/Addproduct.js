@@ -8,6 +8,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getBrands } from '../features/brand/brandSlice';
 import { getCategories } from '../features/pcategory/pcategorySlice';
 import Dropzone from 'react-dropzone'
+import { uploadImg } from '../features/upload/uploadSlice';
 
 let schema = Yup.object().shape({
     title: Yup.string().required("El Titulo es requerido"),
@@ -142,7 +143,9 @@ const Addproduct = () => {
                         {formik.touched.quantity && formik.errors.quantity}
                     </div>
                     <div className='bg-white border-1 p-5 text-center'>
-                        <Dropzone onDrop={acceptedFiles => console.log(acceptedFiles)}>
+                        <Dropzone
+                            onDrop={acceptedFiles => dispatch(uploadImg(acceptedFiles))}
+                        >
                             {({ getRootProps, getInputProps }) => (
                                 <section>
                                     <div {...getRootProps()}>
