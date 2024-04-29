@@ -7,11 +7,15 @@ import { useFormik } from "formik";
 import { useDispatch, useSelector } from "react-redux";
 import { getBrands } from '../features/brand/brandSlice';
 import { getCategories } from '../features/pcategory/pcategorySlice';
+import Dropzone from 'react-dropzone'
 
 let schema = Yup.object().shape({
     title: Yup.string().required("El Titulo es requerido"),
     description: Yup.string().required("La Descripcion es requerida"),
     price: Yup.number().required("El Precio es requerido"),
+    brand: Yup.string().required("La Marca es requerida"),
+    category: Yup.string().required("La Categoria es requerida"),
+    quantity: Yup.number().required("La Cantidad es requerida"),
 });
 const Addproduct = () => {
     const dispatch = useDispatch();
@@ -29,6 +33,9 @@ const Addproduct = () => {
             title: "",
             description: "",
             price: "",
+            brand: '',
+            category: '',
+            quantity: "",
         },
         validationSchema: schema,
         onSubmit: (values) => {
@@ -44,6 +51,7 @@ const Addproduct = () => {
             <h3 className='mb-4 title'>Agregar Prodcutos</h3>
             <div>
                 <form onSubmit={formik.handleSubmit} className='d-flex gap-3 flex-column'>
+
                     <CustomInput
                         type='text'
                         label='Ingrese el Titulo del Producto'
@@ -55,30 +63,39 @@ const Addproduct = () => {
                     <div className='error'>
                         {formik.touched.title && formik.errors.title}
                     </div>
+
                     <div className=''>
                         <ReactQuill
                             theme='snow'
                             name='description'
                             onChange={formik.handleChange("description")}
-                            onBlur={formik.handleBlur("description")}
                             value={formik.values.description}
                         />
                     </div>
                     <div className='error'>
                         {formik.touched.description && formik.errors.description}
                     </div>
+
                     <CustomInput
                         type='number'
                         label='Ingrese el Precio del Producto'
                         name='price'
-                        onChange={formik.handleChange("price")}
-                        onBlur={formik.handleBlur("price")}
-                        value={formik.values.price}
+                        onCh={formik.handleChange("price")}
+                        onBlr={formik.handleBlur("price")}
+                        val={formik.values.price}
                     />
                     <div className='error'>
                         {formik.touched.price && formik.errors.price}
                     </div>
-                    <select name='' className='form-control py-3 mb-3' id=''>
+
+                    <select
+                        name='brand'
+                        onChange={formik.handleChange("brand")}
+                        onBlur={formik.handleBlur("brand")}
+                        value={formik.values.brand}
+                        className='form-control py-3 mb-3'
+                        id=''
+                    >
                         <option value=''>Seleccione Marca</option>
                         {brandState.map((i, j) => {
                             return (
@@ -88,8 +105,18 @@ const Addproduct = () => {
                             );
                         })}
                     </select>
+                    <div className='error'>
+                        {formik.touched.brand && formik.errors.brand}
+                    </div>
 
-                    <select name='' className='form-control py-3 mb-3' id=''>
+                    <select
+                        name='category'
+                        onChange={formik.handleChange("category")}
+                        onBlur={formik.handleBlur("category")}
+                        value={formik.values.category}
+                        className='form-control py-3 mb-3'
+                        id=''
+                    >
                         <option value=''>Seleccione Categoria</option>
                         {catState.map((i, j) => {
                             return (
@@ -99,9 +126,33 @@ const Addproduct = () => {
                             );
                         })}
                     </select>
+                    <div className='error'>
+                        {formik.touched.category && formik.errors.category}
+                    </div>
 
-                    <CustomInput type='number' label='Ingrese Cantidad del Producto' />
-
+                    <CustomInput
+                        type='number'
+                        label='Ingrese Cantidad del Producto'
+                        name='quantity'
+                        onCh={formik.handleChange("quantity")}
+                        onBlr={formik.handleBlur("quantity")}
+                        val={formik.values.quantity}
+                    />
+                    <div className='error'>
+                        {formik.touched.quantity && formik.errors.quantity}
+                    </div>
+                    <div className='bg-white border-1 p-5 text-center'>
+                        <Dropzone onDrop={acceptedFiles => console.log(acceptedFiles)}>
+                            {({ getRootProps, getInputProps }) => (
+                                <section>
+                                    <div {...getRootProps()}>
+                                        <input {...getInputProps()} />
+                                        <p>Drag 'n' drop some files here, or click to select files</p>
+                                    </div>
+                                </section>
+                            )}
+                        </Dropzone>
+                    </div>
                     <button
                         className='btn btn-success border-0 rounded-3 my-5'
                         type='submit'
@@ -110,7 +161,7 @@ const Addproduct = () => {
                     </button>
                 </form>
             </div>
-        </div>
+        </div >
     )
 }
 
