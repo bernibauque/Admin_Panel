@@ -7,6 +7,7 @@ import pcategoryReducer from "../features/pcategory/pcategorySlice";
 import bcategoryReducer from "../features/bcategory/bcategorySlice";
 import blogReducer from "../features/blogs/blogSlice";
 import enquiryReducer from "../features/enquiry/enquirySlice";
+import uploadReducer from "../features/upload/uploadSlice";
 
 export const store = configureStore({
     reducer: {
@@ -18,5 +19,6 @@ export const store = configureStore({
         bCategory: bcategoryReducer,
         blogs: blogReducer,
         enquiry: enquiryReducer,
+        upload: uploadReducer,
     },
 });
