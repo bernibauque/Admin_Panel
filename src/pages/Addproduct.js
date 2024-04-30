@@ -157,11 +157,15 @@ const Addproduct = () => {
                             )}
                         </Dropzone>
                     </div>
-                    <div className='showimages'>
+                    <div className='showimages d-flex flex-wrap gap-3'>
                         {imgState.map((i, j) => {
                             return (
-                                <div key={j}>
-                                    <img src={i.url} alt='' />
+                                <div className='position-relative' key={j}>
+                                    <button
+                                        className='btn-close position-absolute'
+                                        style={{ top: '10px', right: '10px' }}
+                                    ></button>
+                                    <img src={i.url} alt='' width={200} height={200} />
                                 </div>
                             );
                         })}
