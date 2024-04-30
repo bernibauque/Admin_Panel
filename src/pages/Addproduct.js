@@ -28,6 +28,7 @@ const Addproduct = () => {
 
     const brandState = useSelector((state) => state.brand.brands);
     const catState = useSelector((state) => state.pCategory.pCategories);
+    const imgState = useSelector((state) => state.upload.images);
 
     const formik = useFormik({
         initialValues: {
@@ -155,6 +156,16 @@ const Addproduct = () => {
                                 </section>
                             )}
                         </Dropzone>
+                    </div>
+                    <div className='showimages'>
+                        {imgState.map((i, j) => {
+                            return (
+                                <div key={j}>
+                                    <img src={i.url} alt='' />
+                                </div>
+                            );
+                        })}
+
                     </div>
                     <button
                         className='btn btn-success border-0 rounded-3 my-5'
