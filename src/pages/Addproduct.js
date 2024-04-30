@@ -8,7 +8,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getBrands } from '../features/brand/brandSlice';
 import { getCategories } from '../features/pcategory/pcategorySlice';
 import Dropzone from 'react-dropzone'
-import { uploadImg } from '../features/upload/uploadSlice';
+import { delImg, uploadImg } from '../features/upload/uploadSlice';
 
 let schema = Yup.object().shape({
     title: Yup.string().required("El Titulo es requerido"),
@@ -162,6 +162,7 @@ const Addproduct = () => {
                             return (
                                 <div className='position-relative' key={j}>
                                     <button
+                                        onClick={() => dispatch(delImg(i.public_id))}
                                         className='btn-close position-absolute'
                                         style={{ top: '10px', right: '10px' }}
                                     ></button>
