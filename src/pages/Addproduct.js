@@ -12,12 +12,13 @@ import { delImg, uploadImg } from '../features/upload/uploadSlice';
 import { createProducts } from "../features/product/productSlice";
 
 let schema = Yup.object().shape({
-    title: Yup.string().required("El Titulo es requerido"),
-    description: Yup.string().required("La Descripcion es requerida"),
-    price: Yup.number().required("El Precio es requerido"),
-    brand: Yup.string().required("La Marca es requerida"),
-    category: Yup.string().required("La Categoria es requerida"),
-    quantity: Yup.number().required("La Cantidad es requerida"),
+    title: Yup.string().required("Es necesario colocar un Titulo."),
+    description: Yup.string().required("Es necesario colocar una Descripcion."),
+    price: Yup.number().required("Es necesario colocar un Precio."),
+    brand: Yup.string().required("Es necesario colocar Marca."),
+    category: Yup.string().required("Es necesario colocar una Categoria."),
+    tags: Yup.string().required("Es necesario colocar Tags."),
+    quantity: Yup.number().required("Es necesario colocar una Cantidad."),
 });
 const Addproduct = () => {
     const dispatch = useDispatch();
@@ -51,6 +52,7 @@ const Addproduct = () => {
             price: "",
             brand: '',
             category: '',
+            tags: "",
             quantity: "",
             images: "",
         },
@@ -146,6 +148,25 @@ const Addproduct = () => {
                     </select>
                     <div className='error'>
                         {formik.touched.category && formik.errors.category}
+                    </div>
+
+                    <select
+                        name='tags'
+                        onChange={formik.handleChange("tags")}
+                        onBlur={formik.handleBlur("tags")}
+                        value={formik.values.tags}
+                        className='form-control py-3 mb-3'
+                        id=''
+                    >
+                        <option value='' disabled>
+                            Seleccione Categoria
+                        </option>
+                        <option value='featured'>Featured</option>
+                        <option value='popular'>Popular</option>
+                        <option value='special'>Especial</option>
+                    </select>
+                    <div className='error'>
+                        {formik.touched.tags && formik.errors.tags}
                     </div>
 
                     <CustomInput
