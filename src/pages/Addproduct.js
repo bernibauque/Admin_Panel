@@ -1,6 +1,7 @@
 import { React, useEffect, useState } from 'react';
 import CustomInput from '../components/CustomInput';
 import ReactQuill from "react-quill";
+import { useNavigate } from "react-router-dom";
 import "react-quill/dist/quill.snow.css";
 import * as Yup from "yup";
 import { useFormik } from "formik";
@@ -15,13 +16,14 @@ let schema = Yup.object().shape({
     title: Yup.string().required("Es necesario colocar un Titulo."),
     description: Yup.string().required("Es necesario colocar una Descripcion."),
     price: Yup.number().required("Es necesario colocar un Precio."),
-    brand: Yup.string().required("Es necesario colocar Marca."),
-    category: Yup.string().required("Es necesario colocar una Categoria."),
-    tags: Yup.string().required("Es necesario colocar Tags."),
+    brand: Yup.string().required("Es necesario seleccionar una Marca."),
+    category: Yup.string().required("Es necesario seleccionar una Categoria."),
+    tags: Yup.string().required("Es necesario agregar Tags."),
     quantity: Yup.number().required("Es necesario colocar una Cantidad."),
 });
 const Addproduct = () => {
     const dispatch = useDispatch();
+    const navigate = useNavigate();
     const [images, setImages] = useState([]);
 
     useEffect(() => {
@@ -58,8 +60,11 @@ const Addproduct = () => {
         },
         validationSchema: schema,
         onSubmit: (values) => {
-            alert(JSON.stringify(values))
-            /*dispatch(createProducts(values));*/
+            dispatch(createProducts(values));
+            formik.resetForm()
+            setTimeout(() => {
+                navigate("/admin/list-product");
+            }, 3000);
         },
     });
     const [desc, setDesc] = useState();
@@ -159,7 +164,7 @@ const Addproduct = () => {
                         id=''
                     >
                         <option value='' disabled>
-                            Seleccione Categoria
+                            Seleccione Tags
                         </option>
                         <option value='featured'>Featured</option>
                         <option value='popular'>Popular</option>
