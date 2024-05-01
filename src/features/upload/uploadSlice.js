@@ -60,7 +60,7 @@ export const uploadSlice = createSlice({
                 state.isLoading = false;
                 state.isError = false;
                 state.isSuccess = true;
-                state.images = action.payload;
+                state.images = [];
             })
             .addCase(delImg.rejected, (state, action) => {
                 state.isLoading = false;
