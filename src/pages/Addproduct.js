@@ -9,6 +9,7 @@ import { getBrands } from '../features/brand/brandSlice';
 import { getCategories } from '../features/pcategory/pcategorySlice';
 import Dropzone from 'react-dropzone'
 import { delImg, uploadImg } from '../features/upload/uploadSlice';
+import { createProducts } from "../features/product/productSlice";
 
 let schema = Yup.object().shape({
     title: Yup.string().required("El Titulo es requerido"),
@@ -55,7 +56,7 @@ const Addproduct = () => {
         },
         validationSchema: schema,
         onSubmit: (values) => {
-            alert(JSON.stringify(values));
+            dispatch(createProducts(values));
         },
     });
     const [desc, setDesc] = useState();

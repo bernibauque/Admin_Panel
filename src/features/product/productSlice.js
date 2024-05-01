@@ -9,14 +9,29 @@ export const getProducts = createAsyncThunk(
         } catch (error) {
             return thunkAPI.rejectWithValue(error);
         }
-    });
+    }
+);
+
+export const createProducts = createAsyncThunk(
+    "product/create-products",
+    async (productData, thunkAPI) => {
+        try {
+            return await productService.createProduct(productData);
+        } catch (error) {
+            return thunkAPI.rejectWithValue(error);
+        }
+    }
+);
+
 const initialState = {
     products: [],
+    craetedProduct: "",
     isError: false,
     isLoading: false,
     isSuccess: false,
     message: "",
 };
+
 export const productSlice = createSlice({
     name: "products",
     initialState,
@@ -37,7 +52,10 @@ export const productSlice = createSlice({
                 state.isError = true;
                 state.isSuccess = false;
                 state.message = action.error;
-            });
+            })
+            .addCase(createProducts.pending, (state) => {
+                state.isLoading = true;
+            })
     },
 });
 
