@@ -20,6 +20,7 @@ let schema = Yup.object().shape({
 });
 const Addproduct = () => {
     const dispatch = useDispatch();
+    const [images, setImages] = useState([]);
 
     useEffect(() => {
         dispatch(getBrands());
@@ -30,6 +31,18 @@ const Addproduct = () => {
     const catState = useSelector((state) => state.pCategory.pCategories);
     const imgState = useSelector((state) => state.upload.images);
 
+    const img = [];
+    imgState.forEach((i) => {
+        img.push({
+            public_id: i.public_id,
+            url: i.url,
+        });
+    });
+
+    useEffect(() => {
+        formik.values.images = img;
+    }, [img]);
+
     const formik = useFormik({
         initialValues: {
             title: "",
@@ -38,6 +51,7 @@ const Addproduct = () => {
             brand: '',
             category: '',
             quantity: "",
+            images: "",
         },
         validationSchema: schema,
         onSubmit: (values) => {
@@ -151,7 +165,7 @@ const Addproduct = () => {
                                 <section>
                                     <div {...getRootProps()}>
                                         <input {...getInputProps()} />
-                                        <p>Drag 'n' drop some files here, or click to select files</p>
+                                        <p>Arrastre y suelte algunos archivos aquí o haga clic para seleccionar archivos</p>
                                     </div>
                                 </section>
                             )}
