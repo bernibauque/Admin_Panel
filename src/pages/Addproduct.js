@@ -56,7 +56,8 @@ const Addproduct = () => {
         },
         validationSchema: schema,
         onSubmit: (values) => {
-            dispatch(createProducts(values));
+            alert(JSON.stringify(values))
+            /*dispatch(createProducts(values));*/
         },
     });
     const [desc, setDesc] = useState();
