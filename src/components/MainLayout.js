@@ -3,10 +3,11 @@ import {
     AiOutlineDashboard,
     AiOutlineShoppingCart,
     AiOutlineUser,
-    AiOutlineBgColors,
     AiOutlinePicLeft,
     AiOutlinePicRight,
 } from 'react-icons/ai';
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import { Link, Outlet } from 'react-router-dom';
 import { ImBlog } from 'react-icons/im';
 import { IoIosNotifications } from 'react-icons/io';
@@ -203,6 +204,17 @@ const MainLayout = () => {
                         background: colorBgContainer,
                     }}
                 >
+                    <ToastContainer
+                        position="top-right"
+                        autoClose={250}
+                        hideProgressBar={false}
+                        newestOnTop={true}
+                        closeOnClick
+                        rtl={false}
+                        pauseOnFocusLoss
+                        draggable
+                        theme="light"
+                    />
                     <Outlet />
                 </Content>
             </Layout>
