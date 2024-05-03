@@ -1,8 +1,8 @@
 import { React, useEffect, useState } from 'react';
 import CustomInput from '../components/CustomInput';
 import ReactQuill from "react-quill";
-import { useNavigate } from "react-router-dom";
 import "react-quill/dist/quill.snow.css";
+import { toast } from "react-toastify";
 import * as Yup from "yup";
 import { useFormik } from "formik";
 import { useDispatch, useSelector } from "react-redux";
@@ -11,6 +11,7 @@ import { getCategories } from '../features/pcategory/pcategorySlice';
 import Dropzone from 'react-dropzone'
 import { delImg, uploadImg } from '../features/upload/uploadSlice';
 import { createProducts } from "../features/product/productSlice";
+import { useNavigate } from 'react-router-dom';
 
 let schema = Yup.object().shape({
     title: Yup.string().required("Es necesario colocar un Titulo."),
@@ -34,6 +35,16 @@ const Addproduct = () => {
     const brandState = useSelector((state) => state.brand.brands);
     const catState = useSelector((state) => state.pCategory.pCategories);
     const imgState = useSelector((state) => state.upload.images);
+    const newProduct = useSelector((state) => state.product);
+    const { isSuccess, isError, isLoading, createdProduct } = newProduct;
+    useEffect(() => {
+        if (isSuccess && createdProduct) {
+            toast.success("Product Added Successfullly!");
+        }
+        if (isError) {
+            toast.error("Something Went Wrong!");
+        }
+    }, [isSuccess, isError, isLoading]);
 
     const img = [];
     imgState.forEach((i) => {
@@ -61,9 +72,9 @@ const Addproduct = () => {
         validationSchema: schema,
         onSubmit: (values) => {
             dispatch(createProducts(values));
-            formik.resetForm()
+            formik.resetForm();
             setTimeout(() => {
-                navigate("/admin/list-product");
+                navigate('/admin/list-product');
             }, 3000);
         },
     });

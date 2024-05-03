@@ -3,6 +3,7 @@ import {
     AiOutlineDashboard,
     AiOutlineShoppingCart,
     AiOutlineUser,
+    AiOutlineBgColors,
     AiOutlinePicLeft,
     AiOutlinePicRight,
 } from 'react-icons/ai';
