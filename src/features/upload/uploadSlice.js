@@ -67,8 +67,7 @@ export const uploadSlice = createSlice({
                 state.isError = true;
                 state.isSuccess = false;
                 state.message = action.payload;
-            })
+            });
     },
 });
-
 export default uploadSlice.reducer;
