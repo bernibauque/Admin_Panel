@@ -19,10 +19,10 @@ const Addbrand = () => {
 
     useEffect(() => {
         if (isSuccess && createdBrand) {
-            toast.success("Brand Added Successfullly!");
+            toast.success("Marca agregada con Exito!");
         }
         if (isError) {
-            toast.error("Something Went Wrong!");
+            toast.error("Algo salio mal!");
         }
     }, [isSuccess, isError, isLoading]);
     const formik = useFormik({

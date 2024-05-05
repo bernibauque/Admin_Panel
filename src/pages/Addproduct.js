@@ -39,10 +39,10 @@ const Addproduct = () => {
     const { isSuccess, isError, isLoading, createdProduct } = newProduct;
     useEffect(() => {
         if (isSuccess && createdProduct) {
-            toast.success("Product Added Successfullly!");
+            toast.success("Producto agregado con Exito!");
         }
         if (isError) {
-            toast.error("Something Went Wrong!");
+            toast.error("Algo salió mal!");
         }
     }, [isSuccess, isError, isLoading]);
 
