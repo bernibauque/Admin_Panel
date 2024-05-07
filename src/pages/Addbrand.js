@@ -38,6 +38,7 @@ const Addbrand = () => {
             }, 3000);
         },
     });
+
     return (
         <div>
             <h3 className='mb-4 title'>Agregar Marca</h3>
