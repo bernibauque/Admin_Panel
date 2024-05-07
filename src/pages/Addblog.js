@@ -9,6 +9,8 @@ import * as Yup from "yup";
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from "react-redux";
 import { useFormik } from "formik";
+import { createBlogs } from "../features/blogs/blogSlice";
+import { getCategories } from "../features/bcategory/bcategorySlice"
 
 let schema = Yup.object().shape({
     title: Yup.string().required("Es necesario colocar un Titulo."),
@@ -21,22 +23,23 @@ const Addblog = () => {
     const navigate = useNavigate();
     const [images, setImages] = useState([]);
 
-    /*useEffect(() => {
+    useEffect(() => {
         dispatch(getCategories());
-    }, []);*/
+    }, []);
 
     const imgState = useSelector((state) => state.upload.images);
-    const bCatState = useSelector((state) => state.bCategory.bCategories)
-    //const newProduct = useSelector((state) => state.product);
-    //const { isSuccess, isError, isLoading, createdProduct } = newProduct;
-    /*useEffect(() => {
-        if (isSuccess && createdProduct) {
+    const bCatState = useSelector((state) => state.bCategory.bCategories);
+    const blogState = useSelector((state) => state.blogs);
+    const { isSuccess, isError, isLoading, createdBlog } = blogState;
+
+    useEffect(() => {
+        if (isSuccess && createdBlog) {
             toast.success("Blog agregado con Exito!");
         }
         if (isError) {
             toast.error("Algo salió mal!");
         }
-    }, [isSuccess, isError, isLoading]);*/
+    }, [isSuccess, isError, isLoading]);
 
     const img = [];
     imgState.forEach((i) => {
@@ -59,12 +62,11 @@ const Addblog = () => {
         },
         validationSchema: schema,
         onSubmit: (values) => {
-            alert(JSON.stringify(values))
-            /*dispatch(createProducts(values));*/
-            /*formik.resetForm();
+            dispatch(createBlogs(values));
+            formik.resetForm();
             setTimeout(() => {
-                navigate('/admin/list-product');
-            }, 3000); */
+                navigate('/admin/blog-list');
+            }, 3000);
         },
     });
 
