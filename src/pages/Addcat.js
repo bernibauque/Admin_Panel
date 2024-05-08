@@ -8,6 +8,7 @@ import { useFormik } from "formik";
 import {
     createCategory,
 } from "../features/pcategory/pcategorySlice";
+import { resetState } from "../features/bcategory/bcategorySlice";
 
 let schema = yup.object().shape({
     title: yup.string().required("Es necesario colocar una Categoria."),
@@ -36,7 +37,7 @@ const Addcat = () => {
             dispatch(createCategory(values));
             formik.resetForm();
             setTimeout(() => {
-                navigate('/admin/list-category');
+                dispatch(resetState());
             }, 3000);
         },
     });
