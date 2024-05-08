@@ -5,8 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import * as yup from "yup";
 import { useFormik } from "formik";
-import { createBrand } from '../features/brand/brandSlice';
-import { resetState } from '../features/bcategory/bcategorySlice';
+import { createBrand, resetState } from '../features/brand/brandSlice';
 
 let schema = yup.object().shape({
     title: yup.string().required("Es necesario colocar el Nombre de la Marca."),

@@ -10,7 +10,7 @@ import { getBrands } from '../features/brand/brandSlice';
 import { getCategories } from '../features/pcategory/pcategorySlice';
 import Dropzone from 'react-dropzone'
 import { delImg, uploadImg } from '../features/upload/uploadSlice';
-import { createProducts } from "../features/product/productSlice";
+import { createProducts, resetState } from "../features/product/productSlice";
 import { useNavigate } from 'react-router-dom';
 
 let schema = Yup.object().shape({
@@ -74,7 +74,7 @@ const Addproduct = () => {
             dispatch(createProducts(values));
             formik.resetForm();
             setTimeout(() => {
-                navigate('/admin/list-product');
+                dispatch(resetState());
             }, 3000);
         },
     });

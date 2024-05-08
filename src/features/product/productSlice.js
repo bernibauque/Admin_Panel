@@ -23,6 +23,8 @@ export const createProducts = createAsyncThunk(
     }
 );
 
+export const resetState = createAction("Reset_all");
+
 const initialState = {
     products: [],
     isError: false,
@@ -67,6 +69,7 @@ export const productSlice = createSlice({
                 state.isSuccess = false;
                 state.message = action.error;
             })
+            .addCase(resetState, () => initialState);
         //.addCase(resetState, () => initialState);
     },
 });
