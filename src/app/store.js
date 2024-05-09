@@ -1,4 +1,4 @@
-import { configureStore, getDefaultMiddleware } from '@reduxjs/toolkit';
+/*import { configureStore, getDefaultMiddleware } from '@reduxjs/toolkit';
 import authReducer from "../features/auth/authSlice";
 import customerReducer from "../features/customers/customerSlice";
 import productReducer from "../features/product/productSlice";
@@ -30,9 +30,9 @@ const store = configureStore({
         }),
 });
 
-export default store;
+export default store;*/
 
-/* ORIGINAL
+/* ORIGINAL*/
 import { configureStore } from "@reduxjs/toolkit";
 import authReducer from "../features/auth/authSlice";
 import customerReducer from "../features/customers/customerSlice";
@@ -56,4 +56,4 @@ export const store = configureStore({
         enquiry: enquiryReducer,
         upload: uploadReducer,
     },
-}); */
+});
