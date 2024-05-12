@@ -15,6 +15,7 @@ const columns = [
     {
         title: 'Nombre',
         dataIndex: 'name',
+        sorter: (a, b) => a.name.length - b.name.length,
     },
     {
         title: 'Acciones',

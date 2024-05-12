@@ -64,7 +64,7 @@ const AddCoupon = () => {
                         name='expiry'
                         onCh={formik.handleChange("expiry")}
                         onBlr={formik.handleBlur("expiry")}
-                        val={formik.values.name}
+                        val={formik.values.expiry}
                         label='Ingrese datos de caducidad'
                         id="date"
                     />
