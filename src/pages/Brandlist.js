@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import { Table } from "antd";
-import { getBrands } from '../features/brand/brandSlice';
+import { getBrands, resetState } from '../features/brand/brandSlice';
 import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
@@ -26,6 +26,7 @@ const columns = [
 const Brandlist = () => {
     const dispatch = useDispatch();
     useEffect(() => {
+        dispatch(resetState());
         dispatch(getBrands());
     }, []);
     const brandState = useSelector((state) => state.brand.brands);
@@ -36,7 +37,9 @@ const Brandlist = () => {
             name: brandState[i].title,
             action: (
                 <>
-                    <Link to='/' className='fs-3 text-danger'>
+                    <Link to={`/admin/brand/${brandState[i]._id}`}
+                        className='fs-3 text-danger'
+                    >
                         <BiEdit />
                     </Link>
                     <Link className='ms-3 fs-3 text-danger' to='/'>
