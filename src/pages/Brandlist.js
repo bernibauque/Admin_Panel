@@ -81,7 +81,8 @@ const Brandlist = () => {
                 performAction={() => {
                     deleteBrand(brandId);
                 }}
-                title='Estas seguro de que deseas eliminar esta Marca?' />
+                title='Estas seguro de que deseas eliminar esta Marca?'
+            />
         </div>
     )
 }
