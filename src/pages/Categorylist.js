@@ -5,7 +5,11 @@ import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { BiEdit } from "react-icons/bi";
 import { AiFillDelete } from "react-icons/ai";
-import { deleteAProductCategory, getCategories } from '../features/pcategory/pcategorySlice';
+import {
+    deleteAProductCategory,
+    getCategories,
+    resetState
+} from '../features/pcategory/pcategorySlice';
 import CustomModal from '../components/CustomModal';
 
 const columns = [
@@ -36,6 +40,7 @@ const Categorylist = () => {
     };
     const dispatch = useDispatch();
     useEffect(() => {
+        dispatch(resetState());
         dispatch(getCategories());
     }, []);
     const pCatStat = useSelector((state) => state.pCategory.pCategories);
@@ -46,7 +51,10 @@ const Categorylist = () => {
             name: pCatStat[i].title,
             action: (
                 <>
-                    <Link to='/' className='fs-3 text-danger'>
+                    <Link
+                        to={`/admin/category/${pCatStat[i]._id}`}
+                        className='fs-3 text-danger'
+                    >
                         <BiEdit />
                     </Link>
                     <button
