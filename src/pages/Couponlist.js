@@ -5,7 +5,7 @@ import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { BiEdit } from "react-icons/bi";
 import { AiFillDelete } from "react-icons/ai";
-import { deleteACoupon, getAllCoupon } from '../features/coupon/couponSlice';
+import { deleteACoupon, getAllCoupon, resetState } from '../features/coupon/couponSlice';
 import CustomModal from '../components/CustomModal';
 
 const columns = [
@@ -46,6 +46,7 @@ const Couponlist = () => {
     };
     const dispatch = useDispatch();
     useEffect(() => {
+        dispatch(resetState());
         dispatch(getAllCoupon());
     }, []);
     const couponState = useSelector((state) => state.coupon.coupons);

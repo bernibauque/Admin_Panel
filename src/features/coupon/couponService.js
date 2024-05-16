@@ -14,8 +14,12 @@ const createCoupons = async (coupon) => {
 
 const updateCoupon = async (coupon) => {
     const response = await axios.put(
-        `${base_url}brand/${coupon.id}`,
-        { title: coupon.couponData.title },
+        `${base_url}coupon/${coupon.id}`,
+        {
+            name: coupon.couponData.name,
+            expiry: coupon.couponData.expiry,
+            discount: coupon.couponData.discount,
+        },
         config
     );
     return response.data;
@@ -35,6 +39,6 @@ const couponService = {
     createCoupons,
     deleteCoupon,
     getCoupon,
-    //updateCoupon,
+    updateCoupon,
 };
 export default couponService;
