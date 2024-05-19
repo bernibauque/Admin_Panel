@@ -12,10 +12,10 @@ const createBlog = async (blog) => {
     return response.data;
 };
 
-const updateBlog = async (brand) => {
+const updateBlog = async (blog) => {
     const response = await axios.put(
         `${base_url}blog/${blog.id}`,
-        { title: brand.brandData.title },
+        { title: blog.blogData.title },
         config
     );
     return response.data;
