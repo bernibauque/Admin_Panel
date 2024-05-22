@@ -52,7 +52,8 @@ const Bloglist = () => {
 
             action: (
                 <>
-                    <Link to={`/admin/blog/${getBlogState[i].id}`} className='fs-3 text-danger'>
+                    <Link to={`/admin/blog/${getBlogState[i].id}`}
+                        className='fs-3 text-danger'>
                         <BiEdit />
                     </Link>
                     <button
@@ -67,11 +68,12 @@ const Bloglist = () => {
     }
     const deleteBlog = (e) => {
         dispatch(deleteABlog(e));
+
         setOpen(false);
         setTimeout(() => {
             dispatch(getBlogs());
         }, 100);
-    }
+    };
     return (
         <div>
             <h3 className='mb-4 title'>Listas de Blogs</h3>
