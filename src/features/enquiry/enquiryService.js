@@ -7,13 +7,13 @@ const getEnquiries = async () => {
     return response.data;
 };
 
-const deleteAEnquiry = async (id) => {
-    const response = await axios.get(`${base_url}enquiry/${id}`, config);
+const deleteEnquiry = async (id) => {
+    const response = await axios.delete(`${base_url}enquiry/${id}`, config);
     return response.data;
 };
 
 const enquiryService = {
     getEnquiries,
-    deleteAEnquiry,
+    deleteEnquiry,
 };
 export default enquiryService;

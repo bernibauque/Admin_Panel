@@ -4,7 +4,7 @@ import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { AiFillDelete, AiOutlineEye } from "react-icons/ai";
-import { getEnquiries } from '../features/enquiry/enquirySlice';
+import { deleteAEnquiry, getEnquiries, resetState } from '../features/enquiry/enquirySlice';
 import CustomModal from '../components/CustomModal';
 
 const columns = [
@@ -46,6 +46,7 @@ const Enquiries = () => {
         setOpen(false);
     };
     useEffect(() => {
+        dispatch(resetState());
         dispatch(getEnquiries());
     }, []);
     const enqState = useSelector((state) => state.enquiry.enquiries);
@@ -79,7 +80,7 @@ const Enquiries = () => {
         });
     }
     const deleteEnq = (e) => {
-        dispatch()
+        dispatch(deleteAEnquiry(e))
         setOpen(false);
         setTimeout(() => {
             dispatch(getEnquiries());
