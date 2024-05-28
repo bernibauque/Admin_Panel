@@ -66,7 +66,10 @@ const Enquiries = () => {
             ),
             action: (
                 <>
-                    <Link className='ms-3 fs-3 text-danger' to='/'>
+                    <Link
+                        className='ms-3 fs-3 text-danger'
+                        to={`/admin/enquiries/${enqState[i]._id}`}
+                    >
                         <AiOutlineEye />
                     </Link>
                     <button

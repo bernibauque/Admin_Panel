@@ -12,8 +12,15 @@ const deleteEnquiry = async (id) => {
     return response.data;
 };
 
+const getEnquiry = async (id) => {
+    const response = await axios.get(`${base_url}enquiry/${id}`);
+    return response.data;
+};
+
 const enquiryService = {
     getEnquiries,
     deleteEnquiry,
+    getEnquiry,
 };
+
 export default enquiryService;
