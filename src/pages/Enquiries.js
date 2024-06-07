@@ -59,8 +59,24 @@ const Enquiries = () => {
             mobile: enqState[i].mobile,
             status: (
                 <>
-                    <select name='' className='form-control form-select' id=''>
-                        <option value=''>Establecer Estado</option>
+                    <select
+                        defaultValue={enqState[i].status ? enqState[i].status : "Submitted"}
+                        className='form-control form-select'
+                        id=""
+                        onChange={(e) => setEnquiryStatus(e.target.value)}
+                    >
+                        <option value="Submitted">
+                            Enviado
+                        </option>
+                        <option value="Contacted">
+                            Contactar
+                        </option>
+                        <option value="In Progress">
+                            En progreso
+                        </option>
+                        <option value="Resolved">
+                            Resuelto
+                        </option>
                     </select>
                 </>
             ),
@@ -81,6 +97,9 @@ const Enquiries = () => {
                 </>
             ),
         });
+    }
+    const setEnquiryStatus = (e) => {
+        console.log(e);
     }
     const deleteEnq = (e) => {
         dispatch(deleteAEnquiry(e))
