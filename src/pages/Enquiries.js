@@ -63,7 +63,7 @@ const Enquiries = () => {
                         defaultValue={enqState[i].status ? enqState[i].status : "Submitted"}
                         className='form-control form-select'
                         id=""
-                        onChange={(e) => setEnquiryStatus(e.target.value)}
+                        onChange={(e) => setEnquiryStatus(e.target.value, enqState[i]._id)}
                     >
                         <option value="Submitted">
                             Enviado
@@ -98,8 +98,8 @@ const Enquiries = () => {
             ),
         });
     }
-    const setEnquiryStatus = (e) => {
-        console.log(e);
+    const setEnquiryStatus = (e, i) => {
+        console.log(e, i);
     }
     const deleteEnq = (e) => {
         dispatch(deleteAEnquiry(e))
