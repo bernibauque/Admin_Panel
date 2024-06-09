@@ -100,6 +100,7 @@ const Enquiries = () => {
     }
     const setEnquiryStatus = (e, i) => {
         console.log(e, i);
+        const data = { id: i, enqData: e };
     }
     const deleteEnq = (e) => {
         dispatch(deleteAEnquiry(e))
