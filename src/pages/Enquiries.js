@@ -4,7 +4,7 @@ import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { AiFillDelete, AiOutlineEye } from "react-icons/ai";
-import { deleteAEnquiry, getEnquiries, resetState } from '../features/enquiry/enquirySlice';
+import { deleteAEnquiry, getEnquiries, resetState, updateAEnquiry } from '../features/enquiry/enquirySlice';
 import CustomModal from '../components/CustomModal';
 
 const columns = [
@@ -101,7 +101,8 @@ const Enquiries = () => {
     const setEnquiryStatus = (e, i) => {
         console.log(e, i);
         const data = { id: i, enqData: e };
-    }
+        dispatch(updateAEnquiry(data));
+    };
     const deleteEnq = (e) => {
         dispatch(deleteAEnquiry(e))
         setOpen(false);

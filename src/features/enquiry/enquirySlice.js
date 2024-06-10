@@ -34,7 +34,7 @@ export const getAEnquiry = createAsyncThunk(
     }
 );
 
-export const updateEnquiry = createAsyncThunk(
+export const updateAEnquiry = createAsyncThunk(
     "enquiry/update-enquiry",
     async (enq, thunkAPI) => {
         try {
@@ -109,16 +109,16 @@ export const enquirySlice = createSlice({
                 state.isSuccess = false;
                 state.message = action.error;
             })
-            .addCase(updateEnquiry.pending, (state) => {
+            .addCase(updateAEnquiry.pending, (state) => {
                 state.isLoading = true;
             })
-            .addCase(updateEnquiry.fulfilled, (state, action) => {
+            .addCase(updateAEnquiry.fulfilled, (state, action) => {
                 state.isLoading = false;
                 state.isError = false;
                 state.isSuccess = true;
                 state.updatedEnquiry = action.payload;
             })
-            .addCase(updateEnquiry.rejected, (state, action) => {
+            .addCase(updateAEnquiry.rejected, (state, action) => {
                 state.isLoading = false;
                 state.isError = true;
                 state.isSuccess = false;

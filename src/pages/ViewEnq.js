@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { getAEnquiry } from '../features/enquiry/enquirySlice';
+import { getAEnquiry, updateAEnquiry } from '../features/enquiry/enquirySlice';
 import { BiArrowBack } from 'react-icons/bi';
 
 const ViewEnq = () => {
@@ -17,8 +17,12 @@ const ViewEnq = () => {
 
     const goBack = () => {
         navigate(-1);
-    }
-
+    };
+    const setEnquiryStatus = (e, i) => {
+        console.log(e, i);
+        const data = { id: i, enqData: e };
+        dispatch(updateAEnquiry(data));
+    };
     return (
         <div>
             <div className='d-flex justify-content-between align-items-center'>
@@ -60,6 +64,8 @@ const ViewEnq = () => {
                         <select
                             defaultValue={enqStatus ? enqStatus : "Submitted"}
                             className='form-control form-select'
+                            id=''
+                            onChange={(e) => setEnquiryStatus(e.target.value, getEnqId)}
                         >
                             <option value="Submitted">
                                 Enviado
