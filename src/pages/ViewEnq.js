@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { getAEnquiry, updateAEnquiry } from '../features/enquiry/enquirySlice';
+import { getAEnquiry, resetState, updateAEnquiry } from '../features/enquiry/enquirySlice';
 import { BiArrowBack } from 'react-icons/bi';
 
 const ViewEnq = () => {
@@ -22,6 +22,10 @@ const ViewEnq = () => {
         console.log(e, i);
         const data = { id: i, enqData: e };
         dispatch(updateAEnquiry(data));
+        dispatch(resetState());
+        setTimeout(() => {
+            dispatch(getAEnquiry(getEnqId));
+        }, 100);
     };
     return (
         <div>
