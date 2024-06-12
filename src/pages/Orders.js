@@ -46,13 +46,10 @@ const Orders = () => {
         data1.push({
             key: i + 1,
             name: orderState[i].orderby.firstname,
-            product: orderState[i].products.map((i, j) => {
-                return (
-                    <ul key={j}>
-                        <li>{i.product.title}</li>
-                    </ul>
-                );
-            }),
+            product:
+                <Link to={`/admin/order/${orderState[i].orderby._id}`}>
+                    Ver Pedidos
+                </Link>,
             amount: orderState[i].paymentIntent.amount,
             date: new Date(orderState[i].createdAt).toLocaleString(),
             action: (
