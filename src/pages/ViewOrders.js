@@ -34,7 +34,7 @@ const columns = [
     },
 ];
 
-const Orders = () => {
+const ViewOrder = () => {
     const dispatch = useDispatch();
     useEffect(() => {
         dispatch(getOrders());
@@ -48,7 +48,7 @@ const Orders = () => {
             name: orderState[i].orderby.firstname,
             product:
                 <Link to={`/admin/order/${orderState[i].orderby._id}`}>
-                    Ver orden
+                    Ver Orden de usuario
                 </Link>,
             amount: orderState[i].paymentIntent.amount,
             date: new Date(orderState[i].createdAt).toLocaleString(),
@@ -66,7 +66,7 @@ const Orders = () => {
     }
     return (
         <div>
-            <h3 className='mb-4 title'>Ordenes</h3>
+            <h3 className='mb-4 title'>Ver Orden</h3>
             <div>
                 <Table columns={columns} dataSource={data1} />
             </div>
@@ -74,4 +74,4 @@ const Orders = () => {
     )
 }
 
-export default Orders;
+export default ViewOrder;

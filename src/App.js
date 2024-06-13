@@ -21,6 +21,7 @@ import Addproduct from './pages/Addproduct';
 import Couponlist from './pages/Couponlist';
 import AddCoupon from './pages/AddCoupon';
 import ViewEnq from './pages/ViewEnq';
+import ViewOrder from './pages/ViewOrders';
 
 function App() {
   return (
@@ -43,6 +44,7 @@ function App() {
           <Route path='blog-category' element={<Addblogcat />} />
           <Route path='blog-category/:id' element={<Addblogcat />} />
           <Route path='orders' element={<Orders />} />
+          <Route path='order/:id' element={<ViewOrder />} />
           <Route path='customers' element={<Customers />} />
           <Route path='list-category' element={<Categorylist />} />
           <Route path='category' element={<Addcat />} />
