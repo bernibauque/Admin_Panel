@@ -1,9 +1,9 @@
 import React, { useEffect } from 'react'
 import { Table } from "antd";
-import { getOrders } from "../features/auth/authSlice"
+import { getOrderByUser, getOrders } from "../features/auth/authSlice"
 import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { BiEdit } from "react-icons/bi";
 import { AiFillDelete } from "react-icons/ai";
 
@@ -35,9 +35,11 @@ const columns = [
 ];
 
 const ViewOrder = () => {
+    const location = useLocation();
+    const userId = location.pathname.split("/")[3];
     const dispatch = useDispatch();
     useEffect(() => {
-        dispatch(getOrders());
+        dispatch(getOrderByUser(userId));
     }, []);
     const orderState = useSelector((state) => state.auth.orders);
 
